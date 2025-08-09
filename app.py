@@ -18,7 +18,9 @@ def communicate():
     user_message = {"role": "user", "content": st.session_state["user_input"]}
     messages.append(user_message)
 
-    response = openai.ChatCompletion.create(
+    client = openai.OpenAI()
+
+    response = client.chat.completions.create(
         model="gpt-4o",
         messages=messages
     )
